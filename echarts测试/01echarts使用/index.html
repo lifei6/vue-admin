@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.1/echarts.common.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 800px;height: 400px;"></div>
+</body>
+
+</html>
+
+<script>
+    let div = document.querySelector('div')
+    let myCharts = echarts.init(div)
+    // console.log(myCharts)
+
+    let data = [
+        ['华为', 10, 20, 'x', 31],
+        ['苹果', 15, 40, 'y', 39],
+        ['三星', 20, 50, 'z', 35],
+        ['小米', 25, 70, 't', 32],
+    ]
+    myCharts.setOption({
+        dataset: {
+            source: data
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                dataZoom: {
+                    yAxisIndex: "none"
+                },
+                dataView: {
+                    readOnly: false
+                },
+                magicType: {
+                    type: ['柱状图', '折线图', '饼状图'],
+                },
+                restore: {},
+                saveAsImage: {},
+            },
+            width: 200,
+            heigth: 50,
+            left: 'left',
+        },
+        grid: {
+            left: 50,
+            right: 50,
+        },
+        dataZoom: {},
+        title: {
+            text: '数据可视化',
+            subtext: 'echarts入门',
+            // textStyle:'orange',
+            textStyle: {
+                color: 'orange'
+            },
+            textAlign: 'center',
+            left: 'center'
+        },
+        xAxis: {
+            data: ['华为', '苹果', '三星', '小米'],
+            type: "category",
+        },
+        yAxis: [{
+            axisLine: {
+                show: true,
+            },
+            axisTick: {
+                show: true
+            }
+
+        }, {
+            axisLine: {
+                show: true,
+            },
+            axisTick: {
+                show: true
+            }
+
+        },],
+        legend: {
+            data: ['柱状图', '折线图', '饼状图'],
+            right: 70,
+            orient: 'vertical',
+        },
+        tooltip: {
+            textStyle: {
+                color: 'red',
+            }
+        },
+        series: [
+            {
+                name: '柱状图',
+                type: 'bar',
+                // data: [10, 20, 30, 40],
+                color: 'orange',
+                encode: {
+                    y: 1
+                },
+                yAxisIndex: 0,
+            },
+            {
+                name: '折线图',
+                type: 'line',
+                // data: [10, 20, 30, 40],
+                color: 'skyblue',
+                encode: {
+                    y: 2
+                },
+                yAxisIndex: 1,
+                itemStyle: {
+                    opacity: 0,
+                },
+                lineStyle: {
+                    color: 'pink'
+                },
+                // areaStyle:{
+            //         color:{
+            //             type: 'linear',
+            //             x: 0,
+            //             y: 0,
+            //             x2: 0,
+            //             y2: 1,
+            //             colorStops: [{
+            //                 offset: 0, color: 'skyblue' // 0% 处的颜色
+            //             }, {
+            //                 offset: 1, color: 'blue' // 100% 处的颜色
+            //             }],
+            //             global: false // 缺省为 false
+            //         }
+            //     }
+            },
+            {
+                name: '饼状图',
+                type: 'pie',
+                // data:[{name:'华为',value:10},{name:'苹果',value:20},{name:'三星',value:30},{name:'小米',value:40}],
+                width: 200,
+                heigth: 100,
+                top: 0,
+                left: 200,
+                radius: 30,
+                encode: {
+                    itemName: 3,
+                    value: 4
+                },
+            },
+        ]
+    })
+</script>

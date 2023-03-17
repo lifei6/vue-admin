@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="400" height="400" id="canvas"></canvas>
+    <script>
+        let canvas = document.querySelector('canvas')
+        let ctx = canvas.getContext('2d')
+
+        ctx.strokeStyle='orange'
+        ctx.moveTo(100,100)
+        ctx.lineTo(200,100)
+        ctx.stroke()
+
+        ctx.fillStyle='red'
+        ctx.strokeStyle='skyblue'
+        ctx.fillRect(200,200,100,100)
+        ctx.strokeRect(0, 0, 100, 100);
+
+        ctx.beginPath()
+        ctx.arc(100,100,50,0,2*Math.PI,false)
+        ctx.closePath()
+        ctx.fillStyle = 'rgba(0,255,0,0.25)';
+        ctx.fill();
+
+        ctx.clearRect(200,200,10,10)
+
+        ctx.font='20px 微软雅黑'
+        ctx.fillStyle='red'
+        ctx.fillText('你好二',100,100)
+
+    </script>
+</body>
+</html>
